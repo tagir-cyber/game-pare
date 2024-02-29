@@ -35,11 +35,12 @@ function pare() {
     return array;
   }
 
-  function createCardList(shaffledCards) {
+  function createCardList(shaffledNums) {
     const cards = document.createElement("ul");
     cards.classList.add("list", "list-reset");
-    for (let i = 0; i < shaffledCards.length; i++) {
-      let item = createCard(shaffledCards[i]);
+
+    for (let i = 0; i < shaffledNums.length; i++) {
+      let item = createCard(shaffledNums[i]);
       cards.append(item);
     }
 
@@ -62,7 +63,7 @@ function pare() {
     function timer() {
       let timerNum;
       clearInterval(timerNum);
-
+    // Надо добавить поведение игры в случае истечения времени 
       timerNum = setInterval(() => {
         if (isFinish()) {
           clearInterval(timerNum);
