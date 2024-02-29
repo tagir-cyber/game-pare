@@ -4,6 +4,8 @@ function pare() {
   createCardList(shaffle(getArray(countNumber)));
   // const array = getArray(countNumber);
 
+  // Все еще не добавлено поведение при нечетном значении введенного числа
+  // И в целом валидация не полная
   function getArray(count) {
     if (count % 2 === 0) {
       let array = [];
@@ -65,21 +67,19 @@ function pare() {
         if (isFinish()) {
           clearInterval(timerNum);
           console.log("Все карты открыты.");
-        }else{
-            if (secNum > 0) {
-                secNum--;
-                timeBox.textContent = secNum;
-                console.log(secNum);
-              } else if (secNum < 1) {
-                clearInterval(timerNum);
-                console.log("Время вышло");
-              }
+        } else {
+          if (secNum > 0) {
+            secNum--;
+            timeBox.textContent = secNum;
+            console.log(secNum);
+          } else if (secNum < 1) {
+            clearInterval(timerNum);
+            console.log("Время вышло");
+          }
         }
       }, 1000);
     }
   }
-
-  
 
   function createCard(num) {
     let item = document.createElement("li");
