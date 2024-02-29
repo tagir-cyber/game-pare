@@ -2,8 +2,6 @@ function pare(){
     let countNumber = prompt("Введите четное количество карт до 12");
 
     const array = getArray(countNumber);
-    // const shaffledArray = shaffle(array);
-
 
     function getArray (count){
         let array = [];
@@ -32,9 +30,7 @@ function pare(){
         const cards = document.createElement("ul");
         cards.classList.add("list", "list-reset");
         for(let i=0; i<shaffledCards.length; i++){
-            let item = document.createElement("li");
-            item.classList.add("item");
-            item.textContent = shaffledCards[i];
+            let item = createCard(shaffledCards[i]);
             cards.append(item);
         }
         const container = document.createElement("div");
@@ -44,6 +40,43 @@ function pare(){
         section.append(container)
         document.body.append(section);
     }
+
+    function createCard(num){
+        let item = document.createElement("li");
+        item.classList.add("item");
+        item.textContent = num;
+        item.addEventListener("click", function(){
+            if(!this.classList.contains("pare")&&!this.classList.contains("opened-card")){
+                this.classList.add("pare");
+
+                let pares = Array.from(document.getElementsByClassName("pare"));
+
+                if(pares.length>1){
+                    if(pares[0].textContent === pares[1].textContent){
+                        pares.forEach(function(element){
+                            element.classList.add("opened-card");
+                            element.classList.remove("pare");
+                            isFinish();
+                        })
+                    }else{
+                        pares.forEach(function(element){
+                            element.classList.remove("pare");
+                        })
+                    }
+                }
+            }
+        });
+        return item;
+    }
+
+    function isFinish(){
+        let openedCards = Array.from(document.getElementsByClassName("opened-card"));
+        console.log(openedCards.length, +countNumber);
+        if(openedCards.length === +countNumber){
+            console.log("Вы победили!");
+        }
+    }
+ 
     
     createCardList(shaffle(array));
 }

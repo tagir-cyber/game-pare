@@ -35,3 +35,11 @@ section{
     font-size: 40px;
     cursor: pointer;
 }
+
+.pare{
+    background-color: aquamarine;
+}
+
+.opened-card{
+    background-color: blue;
+}
