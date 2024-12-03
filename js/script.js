@@ -117,7 +117,7 @@ function pare() {
     let openedCards = Array.from(
       document.getElementsByClassName("opened-card")
     );
-    console.log(openedCards.length, countNumber);
+    // console.log(openedCards.length, countNumber);
     if (openedCards.length === countNumber) {
       console.log("Вы победили!");
       return true;
